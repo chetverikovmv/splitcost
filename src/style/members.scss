@@ -1,0 +1,119 @@
+.members {
+    margin-bottom: 36px;
+    font-size: 14px;
+    color: #333333;
+}
+
+#event-name {
+    padding-right: 20px;
+
+    &:focus {
+        padding-right: 20px;
+    }
+}
+
+.members__event-name {
+    display: flex;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+
+.members__wrapper {
+    display: block;
+    align-items: center;
+    width: 100%;
+}
+
+.members__member {
+    display: block;
+    position: relative;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.members__member-name {
+    display: block;    
+    text-align: center;
+    width: 100%;
+    position: relative;
+
+    &:before {
+        content: "";
+        width: 100%;
+        height: 1px;
+        background-color: #e5e5e5;
+        position: absolute;
+        top: -20px;
+        left: 0;
+    }
+}
+
+.members__delete {
+    position: absolute;
+    right: 0;
+    top: 24px;
+}
+
+.members__member-pair {
+    width: 100%;
+    padding-top: 20px;
+
+    display: flex;
+    align-items: center;
+}
+
+.members__button {
+    width: 100%;
+}
+
+// начиная с планешетного размера
+@media screen and (min-width: $tablet-width) {
+
+    .members__event-name input {
+        margin-left: 10px;
+    }
+
+     .members__wrapper {
+        display: flex;
+        width: 50%;
+    }
+
+    .members__member {
+        display: flex;
+        position: static;
+        padding-top: 0;
+    }
+
+    .members__member-name {
+        display: flex;
+        align-items: center;
+        width: 50%;
+    }
+
+    .members__member-name {
+
+        &:before {
+            content: "";
+            width: 0;
+            height: 0;
+        }
+    }
+
+    .members__delete {
+        position: absolute;
+        right: 0;
+        top: 0px;
+    }
+
+    .members__member-pair {
+        width: 50%;
+        padding-top: 0px;
+        padding-left: 12px;
+    }
+
+    .members__button {
+        width: 50%;
+    }
+}
+

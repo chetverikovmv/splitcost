@@ -1,0 +1,51 @@
+.notification {
+    min-height: 100px;
+    position: fixed;
+    font-size: 14px;
+    color: #333333;    
+    background-color: #fff;
+    box-shadow: 0px 0px 15px 0px rgba(0, 1, 1, 0.25);
+
+    padding-top: 25px;
+    padding-bottom: 25px;
+    padding-right: 40px;
+    padding-left: 40px;
+
+    bottom: 0%;
+    left: 0%;
+    width: 100%;
+    // width: $modal-width-mobile;
+    // margin-left: -($modal-width-mobile)/2;
+
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+    z-index: 200;
+}
+
+.notification-show {
+    visibility: visible;
+    opacity: 0.95;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+// .notification__text {
+// }
+
+.notification__exit {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+.notification__exit-button {
+    background-color: transparent;
+}
+
+// начиная с планшетного размера
+@media screen and (min-width: $tablet-width) {
+    .notification {
+        left: 50%;
+        width: 380px;
+    }
+}
+

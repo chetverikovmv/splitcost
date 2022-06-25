@@ -1,0 +1,20 @@
+.heading {
+    margin-top: 20px - 4px;
+    margin-bottom: 20px - 4px;
+}
+
+.heading-h2 {
+    margin-top: 20px - 4px - 4px;
+}
+
+// начиная с планшетного размера
+@media screen and (min-width: $tablet-width) {
+    .heading {
+        margin-top: 38px - 4px;
+        margin-bottom: 38px - 4px;
+    }
+
+    .heading-h2 {
+        margin-top: 38px - 4px - 4px;
+    }
+}

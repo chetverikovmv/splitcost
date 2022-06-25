@@ -1,0 +1,46 @@
+.page-footer {
+    margin-top: $page-footer-margin-height;
+    background-color: #363636;
+    min-height: 58px;
+    display: flex;
+}
+
+.page-footer__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #d4d4d4;
+    font-weight: bold;
+    padding-left: $side-padding-mobile;
+    padding-right: $side-padding-mobile;
+    width: 100%;
+}
+
+.page-footer__text {
+    font-size: 21px;
+
+}
+
+.copyright__text {
+    font-size: 14px;
+}
+
+// начиная с планшетного размера
+@media screen and (min-width: $tablet-width) {
+    .page-footer {
+        min-height: 122px;
+    }
+
+    .page-footer__wrapper {
+        padding-left: $side-padding-tablet;
+        padding-right: $side-padding-tablet;
+    }
+}
+
+// начиная с десктопного размера
+@media screen and (min-width: $dt-width) {
+    .page-footer__wrapper {
+        padding-left: $side-padding-dt;
+        padding-right: $side-padding-dt;
+    }
+}

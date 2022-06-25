@@ -1,0 +1,84 @@
+.result {
+    margin-bottom: 36px;
+}
+
+.result__card {
+    text-transform: none;
+    background-color: $light-gray-color;
+    min-height: 59px;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    position: relative;
+    min-height: 58px;
+
+    &:before {
+        content: "";
+        width: 100%;
+        height: 1px;
+        background-color: $strong-gray-color;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+}
+
+.result__card:first-child {
+    min-height: 58px;
+
+    &::before {
+        content: "";
+        height: 0;
+    }
+
+}
+
+.result__text {
+    font-size: 18px;
+}
+
+.result__wrapper {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 4px;
+}
+
+.result__copy {
+    font-size: 14px;
+    color: #333333;
+    position: relative;
+    margin-bottom: 20px;
+    cursor: pointer;
+
+
+    &:before {
+        position: absolute;
+        top: 0;
+        left: -13px;
+        width: 8px;
+        height: 10px;
+        content: url(../img/copy-icon.png)
+    }
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.result__link {
+    text-transform: none;
+    display: flex;
+    align-items: center;
+    background-color: $light-gray-color;
+    height: 58px;
+
+    p {
+        font-weight: bold;
+        padding-left: 20px;
+        padding-right: 20px;
+        line-height: 58px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}

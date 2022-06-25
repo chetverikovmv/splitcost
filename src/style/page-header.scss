@@ -1,0 +1,80 @@
+.page-header {
+    min-height: 65px;
+    background-color: $main-color;
+    display: flex;
+    align-items: center;
+}
+
+.page-header--inner {
+    min-height: 20px;
+
+    p {
+        display: none;
+    }
+}
+
+.page-header__wrapper {
+    text-transform: none;
+    padding-left: $side-padding-mobile;
+    padding-right: $side-padding-mobile;
+    margin-top: -2px;
+}
+
+.page-header__text {
+    font-family: $font-site;
+    font-size: $header-text-mobile;
+    color: #fff;
+}
+
+.page-header__text--small {
+    font-size: $header-text-small-mobile;
+    margin-top: 3px;
+}
+
+// начиная с планешетного размера
+@media screen and (min-width: $tablet-width) {
+    .page-header {
+        min-height: 76px;
+    }
+
+    .page-header--inner {
+        min-height: 20px;    
+    }
+
+    .page-header__wrapper {
+        padding-left: $side-padding-tablet;
+        padding-right: $side-padding-tablet;
+    }
+
+    .page-header__text {
+        font-size: $header-text-tablet;
+    }
+
+    .page-header__text--small {
+        font-size: $header-text-small-tablet;
+    }
+}
+
+// начиная с десктопного размера
+@media screen and (min-width: $dt-width) {
+    .page-header {
+        min-height: 96px;
+    }
+
+    .page-header--inner {
+        min-height: 20px;    
+    }
+
+    .page-header__wrapper {
+        padding-left: $side-padding-dt;
+        padding-right: $side-padding-dt;
+    }
+
+    .page-header__text {
+        font-size: $header-text-dt;
+    }
+
+    .page-header__text--small {
+        font-size: $header-text-small-dt;
+    }
+}

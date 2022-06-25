@@ -1,0 +1,103 @@
+.costs {
+    margin-bottom: 36px;
+}
+
+.costs__cost {
+    text-transform: none;
+    padding-left: 20px;
+    display: block;
+    min-height: 58px;
+    cursor: pointer;
+
+    &:nth-child(2n+1) {        
+        background-color: #fff;
+    }
+
+    &:nth-child(2n) {
+        background-color: $light-gray-color;
+    }
+}
+
+.costs__wrapper {
+    padding-top: 20px;
+}
+
+.costs__cost-name {
+    font-size: 18px;
+    line-height: 18px;
+    color: #000;
+}
+
+.costs__payer {
+    font-size: 16px;
+    line-height: 18px;
+}
+
+// .colortext {
+//     color: $main-color;
+//     font-weight: bold;
+// }
+
+.costs__wrapper-value {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.costs__value {
+    font-size: 21px;
+    line-height: 58px;
+    font-weight: bold;
+    color: #000;
+    padding-right: 20px;
+}
+
+.costs__delete {
+    width: 58px;
+    height: 58px;
+    cursor: pointer;
+    margin-top: -110px;
+}
+
+.costs__text {
+    text-transform: none;
+    color: $main-color;
+    font-weight: bold;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.costs__button {
+    width: 100%;
+    margin-top: 20px;
+}
+
+// начиная с планшетного размера
+@media screen and (min-width: $tablet-width) {
+    .costs__cost {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 58px;
+    }
+
+    .costs__wrapper {
+        padding-top: 0px;
+    }
+
+    .costs__delete {        
+        margin-top: 0px;
+    }
+
+    .costs__button {
+        width: 50%;
+        margin-top: 20px;
+    }
+}
+
+// начиная с десктопного размера
+@media screen and (min-width: $dt-width) {
+    .costs__button {
+        width: 40%;
+    }
+}

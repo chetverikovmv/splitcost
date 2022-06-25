@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>SplitCost: легкий способ разделить совместные затраты!</title>
+    <link rel="preload" href="fonts/ptsans.woff2" as="font">
+    <link rel="preload" href="fonts/ptsansbold.woff2" as="font">
+    <link rel="icon" href="img/favicon.png" type="image/x-icon">
+</head>
+
+<body>
+
+    <div class="container">
+        <nav class="main-nav main-nav--closed">
+            <div class="main-nav__wrapper">
+                <div class="main-nav__logo-wrapper">
+                    <a>
+                        <img class="main-nav__logo-image logo__picture" src="img/SC-logo.png" width="136" height="37"
+                            alt="logo">
+                    </a>
+                </div>
+                <ul class="main-nav__list site-list">
+
+                    <li class="site-list__item site-list__item--main site-list__item--active" id="pauseYoutube1">
+                        <a>Главная</a></li>
+                    <li class="site-list__item site-list__item--how-to-use"><a>Как пользоваться</a></li>
+                    <li class="site-list__item site-list__item--about" id="pauseYoutube2"><a>О проекте</a></li>
+
+                </ul>
+
+
+                <button class="main-nav__close">
+                    <img src="img/icon-cross.svg" width="22" height="22" alt="закрыть">
+                </button>
+            </div>
+            <div class="main-nav__bar-wrapper">
+
+
+                <a class="main-nav__logo">
+                    <img class="main-nav__logo-image" src="img/SC-logo.png" width="136" height="37" alt="logo">
+                </a>
+
+                <button class="main-nav__toggle">
+                    <img src="img/icon-menu.svg" width="23" height="22" alt="меню">
+                </button>
+            </div>
+        </nav>
+
+
+
+        <header class="page-header">
+            <div class="page-header__wrapper">
+
+                <p class="page-header__text"><b>SplitCost</b> — это легкий способ разделить совместные затраты!</p>
+                <p class="page-header__text page-header__text--small">Чтобы разобраться кто сколько должен, заполните
+                    форму ниже</p>
+
+            </div>
+        </header>
+
+
+        <main class="page-main">
+
+
+            <nav class="arrow-nav">
+                <ul class="arrow-nav__list arrow-list">
+                    <li class="arrow-list__item arrow-list__item--members"><a>Участники</a></li>
+                    <li class="arrow-list__item arrow-list__item--costs"><a>Расходы</a></li>
+                    <li class="arrow-list__item arrow-list__item--results"><a>Результат</a></li>
+                </ul>
+            </nav>
+
+            <section class="heading">
+
+                <h1 class="heading-h1 h1-site"></h1>
+                <h2 class="heading-h2 h2-site"></h2>
+            </section>
+
+            <form action="#" class="members">
+
+                <div class="members__event-name">
+                    <div class="members__wrapper">
+                        <label for="event-name">Мероприятие:</label>
+                        <input id="event-name" name="event-name" type="text" placeholder="Название" minlength="2"
+                            maxlength="40">
+                    </div>
+                    <div class="members__wrapper-empty"></div>
+                </div>
+
+                <!-- <div class="members__member">
+                    <div class="members__member-name">
+                        <label for="member-name-1">Участник&nbsp;№1:</label>
+                        <input id="member-name-1" name="member-name" type="text" placeholder="Имя">
+                        <button class="members__delete" data-id="1"><img src="img/del.jpg" width="58" height="58"
+                                alt="delete"></button>
+                    </div>                 
+               -->
+
+                <button class="members__button add-button" type="submit">Добавить участника</button>
+
+            </form>
+
+            <form action="#" class="costs">
+                <!-- <article class="costs__cost">
+                    <div class="costs__wrapper">
+                        <p class="costs__cost-name">Название первого расхода</p>
+                        <p class="costs__payer">Оплатил: <span class="colortext">Имя 1</span></p>
+                    </div>
+
+                    <div class="costs__wrapper-value">
+                        <div class="costs__value">1000 ₽</div>
+                        <div class="costs__delete"><img src="img/X.png" width="58" height="58" alt="delete"></div>
+                    </div>
+                </article>
+                -->
+                <p class="costs__text">Не внесен еще ни один расход. <br /> Нажмите на кнопку ниже, чтобы начать
+                    добавлять их.</p>
+
+                <button class="costs__button add-button" type="submit">Добавить расход</button>
+
+            </form>
+
+            <secton class="result">
+                <!-- <article class="result__card">
+                    <p class="result__text">Пара <span class="colortext">Андрей</span> и <span
+                            class="colortext">Алена</span> переводят <b>1000 ₽</b> в адрес <span
+                            class="colortext">Евгений</span></p>
+                </article>
+                -->
+
+                <div class="result__wrapper">
+                    <div class="empty"></div>
+                    <a class="result__copy">скопировать текст</a>
+                </div>
+
+                <!-- <div class="result__link">
+                    <img src="img/link.jpg" width="58" height="58" alt="link">
+                    <p class="result__text">https://splitcost.ru/84965</p>
+                </div>
+
+                <div class="result__wrapper">
+                    <div class="empty"></div>
+                    <span class="result__copy">скопировать ссылку на расчет</span>
+                </div> -->
+
+            </secton>
+
+            <div class="next-step">
+                <button class="next-step__button button">
+                </button>
+            </div>
+
+            <div class="how-to-use display-none">
+
+                <p class="how-to-use__text">Что воспользоваться SplitCost необходимо сначала ввести имена участников,
+                    потом внести расходы и далее перейти к результатам расчёта. <br /><br />
+                    Более подробно ознамится с этим поможет видео ниже:<br /><br /></p>
+                <!-- YouTube video -->
+                <div class="thumb-wrap">
+                    <div id="play"></div>
+                    <script>
+                        var tag = document.createElement('script');
+                        tag.src = "https://www.youtube.com/player_api";
+                        var firstScriptTag = document.getElementsByTagName('script')[0];
+                        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+                        var play;
+
+                        function onYouTubePlayerAPIReady() {
+                            play = new YT.Player('play', {
+                                videoId: 'rdbAjm11ShY',
+                            });
+                            document.getElementById('pauseYoutube1').addEventListener("click", function () {
+                                play.pauseVideo();
+                            });
+                            document.getElementById('pauseYoutube2').addEventListener("click", function () {
+                                play.pauseVideo();
+                            });
+
+                        }
+                    </script>
+
+                </div>
+                <!-- End YouTube video -->
+            </div>
+
+            <div class="about display-none">
+                <p class="about__text">Проект SplitCost позволяет разделить совестные расходы. <br /><br />
+                    С его помощью вы легко сможете разобраться кто кому сколько должен. Это может быть полезно,
+                    например, в путешествиях, на мероприятиях, при совместном проживании или при использовани
+                    раздельного бюджета в паре.<br /><br />
+                    Разработал Михаил Четвериков.<br />
+                    <a class="link" href="https://github.com/chetverikovmv/splitcost/" target="_blank">Ссылка на GitHub.</a> </p>
+            </div>
+
+        </main>
+
+
+        <footer class="page-footer">
+            <div class="page-footer__wrapper">
+
+                <p class="page-footer__text">splitcost</p>
+                <b class="copyright__text">2022</b>
+
+            </div>
+        </footer>
+    </div>
+
+    <template class="template-member">
+        <article class="members__member">
+            <div class="members__member-name">
+                <label for="member-name">Участник&nbsp;№3:</label>
+                <input id="member-name" name="member-name" type="text" placeholder="Имя" minlength="2" maxlength="31"
+                    required>
+                <button class="members__delete" data-id="0"><img src="img/del.jpg" width="58" height="58"
+                        alt="delete"></button>
+                <span class="validation-message-member"></span>
+            </div>
+            <div class="members__member-pair">
+                <label for="member-pair">в&nbsp;паре&nbsp;с&nbsp;…</label>
+                <select id="member-pair" name="member-pair">
+                    <option value="no" selected>—</option>
+                </select>
+            </div>
+        </article>
+    </template>
+
+    <template class="template-cost">
+        <article class="costs__cost">
+            <div class="costs__wrapper">
+                <p class="costs__cost-name">Название первого расхода</p>
+                <p class="costs__payer">Оплатил: <span class="colortext">Имя 1</span></p>
+            </div>
+
+            <div class="costs__wrapper-value">
+                <div class="costs__value">1000 ₽</div>
+                <div class="costs__delete"><img class="costs__delete-pic" src="img/X.png" width="58" height="58"
+                        alt="delete"></div>
+            </div>
+        </article>
+    </template>
+
+    <template class="template-cost-user">
+        <li class="modal-cost__cost-user cost-user">
+            <label class="checkbox" for="cost-user-1"><input class="visually-hidden input checkbox-input"
+                    type="checkbox" id="cost-user-1" name="cost-user-1" checked>
+                <span class="checkbox-indicator checkbox-indicator--cut">Имя 1</span></label>
+        </li>
+    </template>
+
+    <template class="template-result">
+        <article class="result__card">
+            <p class="result__text">Пара <span class="colortext">Андрей</span> и <span class="colortext">Алена</span>
+                переводят <b>1000 ₽</b> в адрес <span class="colortext">Евгений</span></p>
+        </article>
+    </template>
+
+
+    <div class="modal container popup-cost">
+        <form class="modal-cost form">
+
+            <div class="modal-cost__heading">
+                <h2 class="h2-site">Расход №1</h2>
+            </div>
+
+            <div class="modal-cost__cost">
+                <div class="modal-cost__name">
+                    <label for="cost__name-1">Название:</label>
+                    <input class="input" id="cost__name-1" name="name" type="text" placeholder="Расход" maxlength="34">
+                    <span class="validation-message-cost"></span>
+                </div>
+                <div class="modal-cost__sum">
+                    <label for="cost__sum-1">Сумма:</label>
+                    <input class="input" id="cost__sum-1" name="sum" type="number" placeholder="100" min="1"
+                        max="999999999999999999">
+                    <div class="modal-cost__rub"><img src="img/rub.jpg" width="58" height="58" alt="delete"></div>
+                    <span class="validation-message-cost validation-message-cost--last-child"></span>
+                </div>
+            </div>
+
+            <div class="modal-cost__payment">
+                <div class="modal-cost__payer">
+                    <label for="cost__payer">Оплатил:</label>
+                    <select id="cost__payer" class="input select" name="payer">
+                        <option value="no" selected>Выберете</option>
+                        <option value="test">test</option>
+                    </select>
+                </div>
+                <div class="modal-cost__fifty-fifty">
+                    <label class="checkbox" for="fifty-fifty"><input class="visually-hidden input" type="checkbox"
+                            id="fifty-fifty" name="fifty-fifty" checked>
+                        <span class="checkbox-indicator">Разделить поровну <span
+                                class="modal-cost__fifty-fifty--hidden-text"> между всеми</span></span></label>
+                </div>
+            </div>
+
+            <div class="modal-cost__wrapper">
+
+                <p class="modal-cost__users-text">Укажите участников, которые пользовались этим расходом:</p>
+                <span class="validation-message-cost validation-message-cost--checkbox"></span>
+                <ul class="modal-cost__users-list">
+                    <!-- <li class="modal-cost__cost-user cost-user">
+                        <label class="checkbox" for="cost-user-1"><input class="visually-hidden input" type="checkbox"
+                                id="cost-user-1" name="cost-user-1">
+                            <span class="checkbox-indicator">Имя 1</span></label>
+                    </li>
+                   -->
+
+                </ul>
+
+            </div>
+
+            <div class="modal-cost__add">
+                <button class="button modal-cost__button button-type-submit" type="submit"></button>
+            </div>
+
+            <div class="modal__exit">
+                <button class="modal__exit-button" type="button"><img src="img/X.png" width="58" height="58"
+                        alt="exit"></button>
+            </div>
+
+        </form>
+        <div class="overlay"></div>
+    </div>
+
+    <div class="modal container popup-message">
+        <div class="modal-message">
+            <div class="modal-message__heading">
+                <h2 class="h2-site modal-message__heading-text"></h2>
+            </div>
+
+            <p class="modal-message__text"></p>
+
+            <button class="button modal-message__button" type="submit"></button>
+            <button class="button modal-message__button-cancel"></button>
+
+            <div class="modal__exit">
+                <button class="modal__exit-button"><img src="img/X.png" width="58" height="58" alt="exit"></button>
+            </div>
+
+        </div>
+        <div class="overlay"></div>
+    </div>
+
+    <div class="notification container">
+
+        <p class="notification__text"></p>
+
+        <div class="notification__exit">
+            <button class="notification__exit-button"><img src="img/X-gray.png" width="58" height="58"
+                    alt="exit"></button>
+        </div>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,79 @@
+.arrow-nav {
+    background-color: transparent;
+    width: 100%;    
+}
+
+.arrow-nav__list {
+    display: flex;
+    list-style-type: none;
+}
+
+.arrow-list__item {
+    background-color: $strong-gray-color;
+    color: #000;
+    font-size: $arrow-menu-mobile;
+    font-weight: normal;
+    width: 100%;
+    cursor: pointer;
+    
+    min-height: 40px;
+    clip-path: polygon(0 0, 93% 0, 100% 50%, 93% 100%, 0 100%, 7% 50%);
+
+    a {
+        width: 100%;
+        height: 100%;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &:active {
+            opacity: 0.3;
+        }
+    }
+
+    &:hover {
+        background-color: $ultra-gray-color;
+    }
+
+    &:active {
+        background-color: $ultra-gray-color--down;
+    }
+}
+
+.arrow-list__item:first-child {
+    clip-path: polygon(0 0, 93% 0, 100% 50%, 93% 100%, 0 100%);
+}
+
+.arrow-list__item:last-child {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 7% 50%);
+}
+
+.arrow-list__item--active {
+    background-color: $main-color;
+    cursor: default;
+    
+    a {
+        color: #fff;
+    };
+
+    &:hover {
+        background-color: $main-color;
+    }
+}
+
+// начиная с планшетного размера
+@media screen and (min-width: $tablet-width) {
+    .arrow-list__item {
+        font-size: $arrow-menu-tablet;
+        min-height: 58px;
+        font-weight: $heading-weihgt;
+    }
+}
+
+// начиная с десктопного размера
+@media screen and (min-width: $dt-width) {
+    .arrow-list__item {
+        font-size: $arrow-menu-dt;
+    }
+}

@@ -1,0 +1,36 @@
+.next-step {
+    text-align: center;    
+}
+
+.next-step__button {
+    width: 100%;
+}
+
+.next-step--hidden-text-tablet,
+.next-step--hidden-text-dt {
+    display: none;
+}
+
+// начиная с планешетного размера
+@media screen and (min-width: $tablet-width) {
+    .next-step__button {
+        width: 50%;
+    }
+
+    .next-step--hidden-text-mobile {
+        display: none;
+    }
+
+    .next-step--hidden-text-dt {
+        display: inline;
+    }
+
+    
+}
+
+// начиная с десктопного размера
+@media screen and (min-width: $dt-width) {
+    .next-step--hidden-text-tablet {
+        display: inline;
+    }
+}

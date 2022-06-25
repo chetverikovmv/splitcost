@@ -1,0 +1,50 @@
+// вешать на body
+// .body-modal {
+//     max-height: 100vh;
+//     overflow: hidden;
+//     overflow-y: visible;     
+// }
+
+.modal {
+    // display: none;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+
+    z-index: 100;
+
+}
+
+// вешать на модальное окно
+.modal-show {
+    // display: block;
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+
+.modal__exit {
+    position: absolute;
+    right: 58px;
+    top: 0;
+}
+
+.modal__exit-button {
+    background-color: transparent;
+    position: fixed;    
+}
+
+.overlay {
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.25);
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.display-none {
+    display: none;
+}

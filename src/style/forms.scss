@@ -1,0 +1,225 @@
+input,
+select {
+    font-size: 18px;
+    font-weight: bold;
+    color: #000;
+    background-color: $light-gray-color;
+    resize: none;
+    border: none;
+    width: 100%;
+    height: 58px;
+
+    padding-left: 20px;
+    padding-right: 20px + 58px;
+
+
+    &:hover {
+        background-color: #e5e5e5;
+    }
+
+    &:focus {
+        background-color: #fff;
+        outline: none;
+        box-shadow: inset 0 0 0 4px $diabled-color;
+        padding-left: 20px;
+        padding-right: 20px + 58px;
+    }
+
+    &:focus::placeholder {
+        color: transparent;
+    }
+}
+
+
+
+input::placeholder {
+    font-size: 18px;
+    font-weight: bold;
+    color: #a1a1a1;
+}
+
+input {
+    margin-top: 6px;
+}
+
+select {
+    margin-left: 12px;
+
+    background-image: url(../img/select.jpg);
+    background-repeat: no-repeat;
+    background-position: 100%;
+    appearance: none;
+}
+
+
+.validation-message-member {
+    position: absolute;
+    left: 20px;
+    top: 82px;
+    color: red;
+    text-transform: none;
+}
+
+.validation-message-cost {
+    position: absolute;
+    left: 20px;
+    top: 82px;
+    color: red;
+    text-transform: none;
+}
+
+.validation-message-cost--last-child {
+    top: 102px;
+}
+
+.validation-message-cost--checkbox {
+    left: 40px;
+    top: 32px;
+}
+
+/* checkbox */
+
+.checkbox {
+    position: relative;
+    padding-left: 79px;
+    cursor: pointer;
+
+    //display: flex;
+    //align-items: center;
+}
+
+.checkbox-indicator {
+    text-transform: none;
+    font-size: 18px;
+    font-weight: bold;
+    color: #000;
+}
+
+.checkbox-indicator--cut {
+    display: inline-block;
+    width: 170px;
+    text-overflow: ellipsis;    
+    white-space: nowrap; 
+    overflow: hidden; 
+    margin-bottom: -4px; // ровняем по центрув мобильной версии
+   
+}
+
+.checkbox input[type="checkbox"]+.checkbox-indicator::before {
+    position: absolute;
+    top: -20px;
+    left: 0;
+
+    width: 23px;
+    height: 23px;
+    content: url(../img/form/checkbox-off.png)
+}
+
+
+.checkbox input[type="checkbox"]:checked+.checkbox-indicator::before {
+    position: absolute;
+    top: -20px;
+    left: 0;
+
+    width: 27px;
+    height: 23px;
+    content: url(../img/form/checkbox-on.png)
+}
+
+.checkbox input[type="checkbox"]+.checkbox-indicator:hover::before {
+    position: absolute;
+    top: -20px;
+    left: 0;
+
+    width: 23px;
+    height: 23px;
+    content: url(../img/form/checkbox-off-hover.png)
+}
+
+.checkbox input[type="checkbox"]:checked+.checkbox-indicator:hover::before {
+    position: absolute;
+    top: -20px;
+    left: 0;
+
+    width: 27px;
+    height: 23px;
+    content: url(../img/form/checkbox-on-hover.png)
+}
+
+.checkbox input[type="checkbox"]+.checkbox-indicator:active::before {
+    position: absolute;
+    top: -20px;
+    left: 0;
+
+    width: 23px;
+    height: 23px;
+    content: url(../img/form/checkbox-off-down.png)
+}
+
+.checkbox input[type="checkbox"]:checked+.checkbox-indicator:active::before {
+    position: absolute;
+    top: -20px;
+    left: 0;
+
+    width: 27px;
+    height: 23px;
+    content: url(../img/form/checkbox-on-down.png)
+}
+
+.checkbox input[type="checkbox"]:disabled+.checkbox-indicator {
+    color: #999999;
+}
+
+// начиная с планешетного размера
+@media screen and (min-width: $tablet-width) {
+    input {
+        margin-left: 12px;
+    }
+
+    input {
+        margin-top: 0px;
+    }
+
+    .checkbox input[type="checkbox"]+.checkbox-indicator::before,
+    .checkbox input[type="checkbox"]:checked+.checkbox-indicator::before,
+    .checkbox input[type="checkbox"]+.checkbox-indicator:hover::before,
+    .checkbox input[type="checkbox"]:checked+.checkbox-indicator:hover::before,
+    .checkbox input[type="checkbox"]+.checkbox-indicator:active::before,
+    .checkbox input[type="checkbox"]:checked+.checkbox-indicator:active::before,
+    .checkbox input[type="checkbox"]:disabled+.checkbox-indicator {
+        top: -16px;
+    }
+
+    .checkbox input[type="checkbox"]+.checkbox-indicator--cut::before,
+    .checkbox input[type="checkbox"]:checked+.checkbox-indicator--cut::before,
+    .checkbox input[type="checkbox"]+.checkbox-indicator--cut:hover::before,
+    .checkbox input[type="checkbox"]:checked+.checkbox-indicator--cut:hover::before,
+    .checkbox input[type="checkbox"]+.checkbox-indicator--cut:active::before,
+    .checkbox input[type="checkbox"]:checked+.checkbox-indicator--cut:active::before,
+    .checkbox input[type="checkbox"]:disabled+.checkbox-indicator--cut {
+        top: -20px;
+    }
+
+    .validation-message-member {        
+        left: 130px;
+        top: 58px;        
+    }   
+
+    .validation-message-cost {        
+        left: 100px;
+        top: 58px;        
+    } 
+
+    .validation-message-cost--checkbox {
+        left: 40px;
+        top: 12px;
+    }
+
+    .checkbox-indicator--cut {
+        display: inline;
+        width: auto;
+        overflow: auto;       
+    }
+
+
+}

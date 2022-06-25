@@ -1,0 +1,45 @@
+.page-main {
+    background-color: #fff;
+
+    padding-left: $side-padding-mobile;
+    padding-right: $side-padding-mobile;
+
+    padding-top: 14px; 
+    
+    min-height: calc(100vh - #{$footer-height-mobile} - #{$main-nav-height} - #{$page-header-height-mobile} - #{$page-footer-margin-height});
+}
+
+.page-main--inner {
+  
+    min-height: calc(100vh - #{$footer-height-mobile} - #{$main-nav-height} - #{$page-header-height-inner} - #{$page-footer-margin-height});
+}
+
+// начиная с планшетного размера
+@media screen and (min-width: $tablet-width) {
+
+    .page-main {
+        padding-left: $side-padding-tablet;
+        padding-right: $side-padding-tablet;
+
+        min-height: calc(100vh - #{$footer-height-tablet} - #{$main-nav-height} - #{$page-header-height-tablet} - #{$page-footer-margin-height});
+    }
+
+    .page-main--inner {
+        min-height: calc(100vh - #{$footer-height-tablet} - #{$main-nav-height} - #{$page-header-height-inner} - #{$page-footer-margin-height});
+    }
+}
+
+// начиная с десктопного размера
+@media screen and (min-width: $dt-width) {
+    
+    .page-main {
+        padding-left: $side-padding-dt;
+        padding-right: $side-padding-dt;
+
+        min-height: calc(100vh - #{$footer-height-dt} - #{$main-nav-height} - #{$page-header-height-dt} - #{$page-footer-margin-height});
+    }
+
+    .page-main--inner {
+        min-height: calc(100vh - #{$footer-height-dt} - #{$main-nav-height} - #{$page-header-height-inner} - #{$page-footer-margin-height});
+    }
+}
