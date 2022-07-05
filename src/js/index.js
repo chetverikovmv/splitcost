@@ -19,6 +19,7 @@ import "./main-menu.js"; // уравление состояниями при р�
 import "./section-members.js"; // раздел "участники"
 import "./section-costs.js"; // раздел "расходы"
 import "./section-result.js"; // раздел "результат"
+import "./location-resolver.js"; // роутер главного меню
 
 import {
     PopupWithMessage
@@ -41,9 +42,6 @@ import {
 import {
     menu
 } from "./main-menu.js";
-import {
-    mobileMenu
-} from "./menu.js";
 import {
     sectionMembers
 } from "./section-members.js";
@@ -81,28 +79,6 @@ const {
         displayNoneClass
     },
 } = selectors;
-
-/// УПРАВЛЕНИЕ ГЛАВНЫМ МЕНЮ ///
-const siteListItemMain = document.querySelector(siteListItemMainSelector);
-const siteListItemHowToUse = document.querySelector(siteListItemHowToUseSelector);
-const siteListItemAbout = document.querySelector(siteListItemAboutSelector);
-
-siteListItemMain.addEventListener('click', (evt) => {
-    evt.preventDefault();
-    menu.status != 'MainMode' ? menu.enableMainMode() : mobileMenu.closeMobileMenu();
-});
-
-siteListItemHowToUse.addEventListener('click', (evt) => {
-    evt.preventDefault();
-    menu.enableHowToUseMode();
-});
-
-siteListItemAbout.addEventListener('click', (evt) => {
-    evt.preventDefault();
-    menu.enableAboutMode();
-});
-
-
 
 /// УПРАВЛЕНИЕ "СТРЕЛОЧНЫМ" МЕНЮ ///
 
