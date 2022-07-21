@@ -24,12 +24,18 @@ const {
         resultCardSelector,
         resultCopySelector,
         resultCopyButtonSelector,
-        templateResult
+        resultTextLinkSelector,
+        resultCopyLinkButtonSelector,
+        templateResult,
+        domain
     },
 } = selectors;
 
+const resultTextLink = document.querySelector(resultTextLinkSelector);
+
 export const sectionResult = {
     resultCopyButton: document.querySelector(resultCopyButtonSelector),
+    resultCopyLinkButton: document.querySelector(resultCopyLinkButtonSelector),
 
     calculateResult() {
 
@@ -143,6 +149,10 @@ export const sectionResult = {
         }
     },
 
+    makeLinkToCalculation(currentCalculationId) {
+        resultTextLink.value = `${domain}#/${currentCalculationId}`
+    },
+
     setListeners() {
         const successCopyingNotif = new Notification();
 
@@ -155,7 +165,19 @@ export const sectionResult = {
             })
             navigator.clipboard.writeText(textResults);
             successCopyingNotif.open('скопировано!', 3000);
-        })
+        });
+
+        this.resultCopyLinkButton.addEventListener('click', (evt) => {
+            evt.preventDefault();
+            let textLink = resultTextLink.value;
+            navigator.clipboard.writeText(textLink);
+            successCopyingNotif.open('ссылка скопирована!', 3000);
+        });
+
+        resultTextLink.addEventListener('click', () => { // выделение текста ссылки по клику
+            resultTextLink.select();
+        });
+
     },
 
     // очистка реультатов

@@ -15,6 +15,8 @@ export const members = {
 
     eventName: '',
 
+    calculationId: '',
+
     addMemberToList() {
         this.membersList.push({
             id: this.membersList.length + 1,

@@ -20,6 +20,9 @@ import "./section-members.js"; // раздел "участники"
 import "./section-costs.js"; // раздел "расходы"
 import "./section-result.js"; // раздел "результат"
 import "./location-resolver.js"; // роутер главного меню
+import "./backend.js"; // бэкенд
+import "./Calculation-card.js"; // класс CalculationCard
+import "./calculations-page.js"; // страница "Мои расчеты"
 
 import {
     PopupWithMessage
@@ -51,6 +54,13 @@ import {
 import {
     sectionResult
 } from "./section-result.js";
+import {
+    Backend
+} from "./backend.js";
+import {
+    calculations
+} from "./calculations-page.js";
+import { ResultCard } from "./Result-card.js";
 
 const {
     menuSelectors: {
@@ -60,7 +70,7 @@ const {
     },
 
     popupsSelectors: {
-        popupMessageSelector,        
+        popupMessageSelector,
     },
 
     arrowButtons: {
@@ -69,9 +79,9 @@ const {
         arrowButtonResultsSelector
     },
 
-    membersSelectors: {      
-        memberSelector,        
-        validationMessageMemberSelector,        
+    membersSelectors: {
+        memberSelector,
+        validationMessageMemberSelector,
     },
 
     mainSelectors: {
@@ -176,15 +186,20 @@ const confirmNewCalculationPopup = new PopupWithMessage(
         costs.costsList.length = 0;
         result.membersList.length = 0;
         result.costsList.length = 0;
+        localStorage.removeItem('current');
+
+        window.location.hash = '#/';
+        window.locationResolver('#/');
 
         sectionCosts.costsTextHint.classList.remove(displayNoneClass);
 
-        sectionMembers.clearMembers();        
-        sectionMembers.renderMembers();       
+        sectionMembers.clearMembers();
+        sectionMembers.renderMembers();
         sectionCosts.clearCosts();
         sectionResult.clearResults();
 
         members.eventName = '';
+        members.calculationId = '';
         sectionMembers.eventNameInput.value = '';
 
         main.enableMembersMode();
@@ -235,11 +250,41 @@ const checkAndEnableCostMode = () => {
     }
 }
 
+const sendDataToServer = (method) => {
+    const jointOriginalObjects = calculations.mergeOriginalObjects(members.eventName, members.calculationId, members.membersList, costs.costsList);
+    jointOriginalObjects.date = new Date().toJSON();
+    const backend = new Backend();
+
+    switch (method) {
+        case 'POST':
+            backend.create(jointOriginalObjects,  sectionResult.makeLinkToCalculation);
+            break;
+
+        case 'PATCH':
+            backend.change(jointOriginalObjects);
+            break;
+    }
+}
+
+const checkAndSendAndEnable = () => {
+    if (localStorage.getItem('current')) {
+        sendDataToServer('PATCH');
+    } else {
+        sendDataToServer('POST');
+
+    }
+
+    main.enableResultMode();
+
+}
+
+
 const checkAndEnableResultMode = () => {
-    sectionResult.calculateResult();
+    sectionResult.calculateResult();   
+  
     costs.costsList.length == 0 ?
         confirmNextStepPopup.open('Нет расходов', `Добавьте хотя бы один расход`, 'ОК', 'no cancel button') :
-        main.enableResultMode();
+        checkAndSendAndEnable();
 }
 
 const startNewCalculation = () => {
@@ -311,6 +356,9 @@ menu.enableMainMode();
 
 // запуск режима "Участники" в первый раз
 main.enableMembersMode();
+
+// чистим куррент локалстордж
+localStorage.removeItem('current');
 
 // рендерим участников в первый раз
 sectionMembers.renderMembers();

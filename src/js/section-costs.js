@@ -275,7 +275,7 @@ export const sectionCosts = {
         })
     },
 
-    //добавление циклом карточек участников из массива
+    //добавление циклом карточек расходов из массива
     renderCosts() {
         costs.costsList.forEach((item) => {
             this.addCostButton.before(createCost(item.id, item.name, sectionCosts.findNameById(item.payer), item.value, item.users).getCost());

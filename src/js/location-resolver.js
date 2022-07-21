@@ -2,13 +2,19 @@ import {
     menu
 } from "./main-menu.js";
 import {
-    mobileMenu
-} from "./menu.js";
+    calculations
+} from "./calculations-page.js";
 
 const locationResolver = (location) => {
+    const calculationId = location.slice(2);
+
     switch (location) {
         case "#/":
-            menu.status != 'MainMode' ? menu.enableMainMode() : mobileMenu.closeMobileMenu();
+            menu.enableMainMode();
+            break;
+
+        case "#/calculations":
+            menu.enableCalculationsMode();
             break;
 
         case "#/how-to-use":
@@ -17,6 +23,11 @@ const locationResolver = (location) => {
 
         case "#/about":
             menu.enableAboutMode();
+            break;
+
+        case `#/${calculationId}`:
+            menu.enableMainMode();
+            calculations.showCalculationByLink(calculationId);
             break;
     }
 }

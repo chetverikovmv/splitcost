@@ -38,13 +38,23 @@
     font-size: 18px;
 }
 
+.result__text, .result__text-link {
+    margin-top: 0;
+    margin-left: 0;
+    padding-right: 20px;
+    
+    &:focus {
+        padding-right: 20px;
+    }
+}
+
 .result__wrapper {
     display: flex;
     justify-content: space-between;
     margin-top: 4px;
 }
 
-.result__copy {
+.result__copy, .result__copy-link {
     font-size: 14px;
     color: #333333;
     position: relative;
@@ -70,8 +80,11 @@
     text-transform: none;
     display: flex;
     align-items: center;
-    background-color: $light-gray-color;
+    // background-color: $light-gray-color;
+    // margin-top: 0 !important;
     height: 58px;
+
+
 
     p {
         font-weight: bold;

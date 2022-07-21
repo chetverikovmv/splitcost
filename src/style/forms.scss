@@ -14,13 +14,13 @@ select {
 
 
     &:hover {
-        background-color: #e5e5e5;
+        background-color: $disabled-color;
     }
 
     &:focus {
         background-color: #fff;
         outline: none;
-        box-shadow: inset 0 0 0 4px $diabled-color;
+        box-shadow: inset 0 0 0 4px $disabled-color;
         padding-left: 20px;
         padding-right: 20px + 58px;
     }

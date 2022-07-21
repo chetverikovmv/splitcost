@@ -23,15 +23,17 @@
                 </div>
                 <ul class="main-nav__list site-list">
 
-             
-                    <li class="site-list__item site-list__item--main site-list__item--active" id="pauseYoutube1">
-                        <a href="#/" onclick="locationResolver('#/')">Главная</a></li>
+
+                    <li class="site-list__item site-list__item--main site-list__item--active pause-youtube">
+                         <a onclick="{locationResolver('#/'); window.location.hash = localStorage.getItem('current') ? `#/${localStorage.getItem('current')}` : '#/'}">Главная</a></li> 
+                    <li class="site-list__item site-list__item--calculations pause-youtube">
+                        <a href="#/calculations" onclick="locationResolver('#/calculations')">Мои расчеты</a></li>
                     <li class="site-list__item site-list__item--how-to-use">
                         <a href="#/how-to-use" onclick="locationResolver('#/how-to-use')">Как пользоваться</a></li>
-                    <li class="site-list__item site-list__item--about" id="pauseYoutube2">
+                    <li class="site-list__item site-list__item--about pause-youtube">
                         <a href="#/about" onclick="locationResolver('#/about')">О проекте</a></li>
 
-          
+
                 </ul>
 
 
@@ -88,7 +90,7 @@
                     <div class="members__wrapper">
                         <label for="event-name">Мероприятие:</label>
                         <input id="event-name" name="event-name" type="text" placeholder="Название" minlength="2"
-                            maxlength="40">
+                            maxlength="40" autocomplete="off">
                     </div>
                     <div class="members__wrapper-empty"></div>
                 </div>
@@ -139,21 +141,24 @@
                     <a class="result__copy">скопировать текст</a>
                 </div>
 
-                <!-- <div class="result__link">
+                <div class="result__link">
                     <img src="img/link.jpg" width="58" height="58" alt="link">
-                    <p class="result__text">https://splitcost.ru/84965</p>
+                    <input class="result__text-link" type="text" readonly>
                 </div>
 
                 <div class="result__wrapper">
                     <div class="empty"></div>
-                    <span class="result__copy">скопировать ссылку на расчет</span>
-                </div> -->
+                    <span class="result__copy-link">скопировать ссылку на расчет</span>
+                </div> 
 
             </secton>
 
             <div class="next-step">
                 <button class="next-step__button button">
                 </button>
+            </div>
+
+            <div class="calculations display-none">                
             </div>
 
             <div class="how-to-use display-none">
@@ -176,27 +181,27 @@
                             play = new YT.Player('play', {
                                 videoId: 'rdbAjm11ShY',
                             });
-                            document.getElementById('pauseYoutube1').addEventListener("click", function () {
-                                play.pauseVideo();
-                            });
-                            document.getElementById('pauseYoutube2').addEventListener("click", function () {
-                                play.pauseVideo();
-                            });
+                           
+                            document.querySelectorAll('.pause-youtube').forEach((li) => {
+                                li.addEventListener("click", function () {
+                                    play.pauseVideo();
+                                });
+                            })
 
                         }
                     </script>
-
                 </div>
                 <!-- End YouTube video -->
             </div>
 
             <div class="about display-none">
-                <p class="about__text">Проект SplitCost позволяет разделить совестные расходы. <br /><br />
+                <p class="about__text">Проект SplitCost позволяет разделить совместные расходы. <br /><br />
                     С его помощью вы легко сможете разобраться кто кому сколько должен. Это может быть полезно,
                     например, в путешествиях, на мероприятиях, при совместном проживании или при использовани
                     раздельного бюджета в паре.<br /><br />
                     Разработал Михаил Четвериков.<br />
-                    <a class="link" href="https://github.com/chetverikovmv/splitcost/" target="_blank">Ссылка на GitHub.</a> </p>
+                    <a class="link" href="https://github.com/chetverikovmv/splitcost/" target="_blank">Ссылка на
+                        GitHub.</a> </p>
             </div>
 
         </main>
@@ -216,7 +221,7 @@
         <article class="members__member">
             <div class="members__member-name">
                 <label for="member-name">Участник&nbsp;№3:</label>
-                <input id="member-name" name="member-name" type="text" placeholder="Имя" minlength="2" maxlength="31"
+                <input id="member-name" name="member-name" type="text" placeholder="Имя" minlength="2" maxlength="31" autocomplete="off"
                     required>
                 <button class="members__delete" data-id="0"><img src="img/del.jpg" width="58" height="58"
                         alt="delete"></button>
@@ -261,6 +266,12 @@
         </article>
     </template>
 
+    <template class="template-calculations">
+        <article class="calculation__card">
+            <p class="calculation__text">Расчет №1</p>
+        </article>
+    </template>
+
 
     <div class="modal container popup-cost">
         <form class="modal-cost form">
@@ -272,13 +283,13 @@
             <div class="modal-cost__cost">
                 <div class="modal-cost__name">
                     <label for="cost__name-1">Название:</label>
-                    <input class="input" id="cost__name-1" name="name" type="text" placeholder="Расход" maxlength="34">
+                    <input class="input" id="cost__name-1" name="name" type="text" placeholder="Расход" maxlength="34" autocomplete="off">
                     <span class="validation-message-cost"></span>
                 </div>
                 <div class="modal-cost__sum">
                     <label for="cost__sum-1">Сумма:</label>
-                    <input class="input" id="cost__sum-1" name="sum" type="number" placeholder="100" min="1"
-                        max="999999999999999999">
+                    <input class="input"  id="cost__sum-1" name="sum" type="number" placeholder="100" min="1"
+                        max="999999999999999999" autocomplete="off">
                     <div class="modal-cost__rub"><img src="img/rub.jpg" width="58" height="58" alt="delete"></div>
                     <span class="validation-message-cost validation-message-cost--last-child"></span>
                 </div>

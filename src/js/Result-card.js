@@ -43,9 +43,7 @@ export class ResultCard {
         return this._resultCard;
     }
 
-    setProperties(isPair, isPaymentWithinPair, summ, creditor, name1, name2) {
-
-        
+    setProperties(isPair, isPaymentWithinPair, summ, creditor, name1, name2) {        
         if (isPair) {
             this._resultText.innerHTML = `<span class="colortext">${name1}</span> (в паре с <b>${name2}</b>) переводит <b>${summ} ₽</b> в адрес <span class="colortext">${creditor}</span>`
         } else {
@@ -53,8 +51,6 @@ export class ResultCard {
                 this._resultText.innerHTML = `<span class="graytext">Внутри пары:</span> <b>${name1}</b> переводит <b>${summ} ₽</b> в адрес <b>${creditor}</b>` :
                 this._resultText.innerHTML = `<span class="colortext">${name1}</span> переводит <b>${summ} ₽</b> в адрес <span class="colortext">${creditor}</span>`
         }
-
-
         return this;
     }
 }

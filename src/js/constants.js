@@ -13,6 +13,7 @@ export const selectors = {
         barWrapperSelector: '.main-nav__bar-wrapper',
 
         siteListItemMainSelector: '.site-list__item--main',
+        siteListItemCalculationsSelector: '.site-list__item--calculations',
         siteListItemHowToUseSelector: '.site-list__item--how-to-use',
         siteListItemAboutSelector: '.site-list__item--about',
         siteListItemActiveClass: 'site-list__item--active',
@@ -77,7 +78,17 @@ export const selectors = {
         resultTextSelector: '.result__text',
         resultCopySelector: '.result__wrapper',
         resultCopyButtonSelector: '.result__copy',
+        resultTextLinkSelector: '.result__text-link',
+        resultCopyLinkButtonSelector: '.result__copy-link',
         templateResult: '.template-result',
+        domain: 'http://localhost:8080/'
+    },
+
+    calculationsSelectors: {
+        calculationCardSelector: '.calculation__card',
+        calculationTextSelector: '.calculation__text',
+        templateCalculation: '.template-calculations',
+        defaultHtmlText: `<p class="calculations__text">Здесь будут указаны Ваши расчеты.</p>`,
     },
 
 
@@ -118,9 +129,8 @@ export const selectors = {
     },
 
     menuPagesSelectors: {
+        calculationsSelector: '.calculations',
         howToUseSelector: '.how-to-use',
-        howToUseTextSelector: '.how-to-use__text',
         aboutSelector: '.about',
-        aboutTextSelector: '.about__text',
     },
 };

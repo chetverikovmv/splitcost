@@ -1,6 +1,5 @@
 .main-nav {
-    background-color: transparent;
-   
+    background-color: transparent;   
 }
 
 .main-nav__toggle {
@@ -207,7 +206,6 @@
         background-color: transparent;
         box-shadow: none;
         width: auto;
-        padding-left: $main-nav-padding;
         padding-right: $main-nav-padding;
 
         a {
@@ -245,15 +243,13 @@
 
     }
 
-
-    .site-list__item:first-child,
+    .site-list__item:first-child {
+        box-shadow: none;       
+    }
     .site-list__item:last-child {
-        box-shadow: none;
-        padding-left: 0;
+        box-shadow: none;       
         padding-right: 0;
     }
-
-
 
     .main-nav__toggle {
         display: none;

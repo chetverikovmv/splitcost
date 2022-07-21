@@ -165,7 +165,8 @@ export const sectionMembers = {
                 }
             })
 
-            numberOfEmpyFields > 0 ? isEmptyFields = false : isEmptyFields = true;
+            // numberOfEmpyFields > 0 ? isEmptyFields = false : isEmptyFields = true;
+            isEmptyFields = numberOfEmpyFields > 0 ? false : true
 
             if (isEmptyFields) {
                 members.addMemberToList();
