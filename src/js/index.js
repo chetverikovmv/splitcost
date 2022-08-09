@@ -199,7 +199,6 @@ const confirmNewCalculationPopup = new PopupWithMessage(
         sectionResult.clearResults();
 
         members.eventName = '';
-        members.calculationId = '';
         sectionMembers.eventNameInput.value = '';
 
         main.enableMembersMode();
@@ -251,7 +250,7 @@ const checkAndEnableCostMode = () => {
 }
 
 const sendDataToServer = (method) => {
-    const jointOriginalObjects = calculations.mergeOriginalObjects(members.eventName, members.calculationId, members.membersList, costs.costsList);
+    const jointOriginalObjects = calculations.mergeOriginalObjects(members.eventName, members.membersList, costs.costsList);
     jointOriginalObjects.date = new Date().toJSON();
     const backend = new Backend();
 
@@ -349,13 +348,9 @@ const checkMembersRepeatability = () => {
     return isRepeatMembers
 }
 
-// Запуск состояний при первой загрузке ///
 
-// запуск режима "Главная" в первый раз
-menu.enableMainMode();
-
-// запуск режима "Участники" в первый раз
-main.enableMembersMode();
+// запуск спиннера
+menu.enableLoadingMode();
 
 // чистим куррент локалстордж
 localStorage.removeItem('current');

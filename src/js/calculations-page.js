@@ -56,7 +56,6 @@ const confirmTransitionToCalculationPopup = new PopupWithMessage(
         
         members.eventName = confirmTransitionToCalculationPopup._cardElement.eventName;
         members.membersList = confirmTransitionToCalculationPopup._cardElement.calculationMembers;
-        members.calculationId = currentCalculationId; // удалить
 
         localStorage.setItem('current', currentCalculationId);
         menu.enableMainMode();
@@ -93,20 +92,20 @@ const configureCard = (calculation, calculationNumber) => {
 
 };
 
-const invaliLinkPopup = new PopupWithMessage(
+const invalidLinkPopup = new PopupWithMessage(
     popupMessageSelector,
 
     () => { // по клику на "да" (сабмит)      
-        invaliLinkPopup.close();
+        invalidLinkPopup.close();
     },
 
     () => { // по клику на "отмена"
-        invaliLinkPopup.close();
+        invalidLinkPopup.close();
     }
 );
 
 export const calculations = {
-    mergeOriginalObjects(eventName, calcuulationId, members, costs) {
+    mergeOriginalObjects(eventName, members, costs) {
         return {
             eventName,
             members,
@@ -147,6 +146,7 @@ export const calculations = {
         const backend = new Backend();
         backend.read(calculationId)
             .then(result => {
+                menu.enableMainMode();
                 if (result) {
                 members.eventName = result.eventName;
                 members.membersList = result.members;
@@ -156,7 +156,7 @@ export const calculations = {
 
                 calculations.clearAndRenderCalculation();
                 } else {
-                    invaliLinkPopup.open('Такого расчета нет', 'проверьте адрес ссылки на расчет', 'OK', 'no cancel button')
+                    invalidLinkPopup.open('Такого расчета нет', 'проверьте адрес ссылки на расчет', 'OK', 'no cancel button')
                 }
             })
     },

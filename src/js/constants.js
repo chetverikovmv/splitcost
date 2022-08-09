@@ -31,8 +31,11 @@ export const selectors = {
         membersSectionSelector: '.members',
         costsSectionSelector: '.costs',
         resultSectionSelector: '.result',
+        nextStepSelector: '.next-step',
         nextStepButtonSelector: '.next-step__button',
         pageMainSelector: '.page-main',
+        loadingSelector: '.loading',
+
 
         pageMainInnerClass: 'page-main--inner',
         displayNoneClass: 'display-none',
@@ -81,7 +84,7 @@ export const selectors = {
         resultTextLinkSelector: '.result__text-link',
         resultCopyLinkButtonSelector: '.result__copy-link',
         templateResult: '.template-result',
-        domain: 'http://localhost:8080/'
+        domain: 'https://splitcost.ru/'
     },
 
     calculationsSelectors: {

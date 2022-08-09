@@ -60,9 +60,11 @@ export class PopupWithForm extends Popup {
 
         const select = document.querySelector(selectSelector); // создание селекта выбора плательщика
         select.length = 0;
+        select.append(new Option('Выберите', 0));
         costUsersList.forEach((item) => {
             select.append(new Option(item.name, item.id))
         });
+        select[0].disabled = true;
 
         this._form.addEventListener('submit', this._submitHandler);
         document.addEventListener('keydown', this._handleEnterClose);       

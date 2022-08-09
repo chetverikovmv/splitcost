@@ -2,6 +2,9 @@ import {
     menu
 } from "./main-menu.js";
 import {
+    main
+} from "./main-content.js";
+import {
     calculations
 } from "./calculations-page.js";
 
@@ -26,18 +29,21 @@ const locationResolver = (location) => {
             break;
 
         case `#/${calculationId}`:
-            menu.enableMainMode();
             calculations.showCalculationByLink(calculationId);
             break;
     }
 }
 
 window.addEventListener('load', () => {
-    const location = window.location.hash;
-
-    if (location) {
-        locationResolver(location)
+    let location = '#/';
+    if (window.location.hash) {
+        location = window.location.hash;
+    };
+    if (location === '#/') {
+        main.status = 'MembersMode'
     }
+
+    locationResolver(location)
 })
 
 window.locationResolver = locationResolver; // чтобы работал onclick в разметке

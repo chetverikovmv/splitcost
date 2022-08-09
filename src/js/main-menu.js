@@ -17,7 +17,7 @@ import {
 
 
 const {
-    menuSelectors: {        
+    menuSelectors: {
         siteListItemActiveClass,
         siteListItemMainSelector,
         siteListItemCalculationsSelector,
@@ -34,8 +34,9 @@ const {
         membersSectionSelector,
         costsSectionSelector,
         resultSectionSelector,
-        nextStepButtonSelector,
+        nextStepSelector,
         pageMainSelector,
+        loadingSelector,
         pageMainInnerClass,
         displayNoneClass,
     },
@@ -44,8 +45,8 @@ const {
     },
     menuPagesSelectors: {
         calculationsSelector,
-        howToUseSelector,       
-        aboutSelector,        
+        howToUseSelector,
+        aboutSelector,
     },
 
     calculationsSelectors: {
@@ -56,9 +57,10 @@ const {
 const pageHeader = document.querySelector(pageHeaderSelector);
 const headingH1 = document.querySelector(headingH1Selector);
 const headingH2 = document.querySelector(headingH2Selector);
-const nextStepButton = document.querySelector(nextStepButtonSelector);
+const nextStepSection = document.querySelector(nextStepSelector);
 const pageMain = document.querySelector(pageMainSelector);
 const arrowNav = document.querySelector(arrowNavSelector);
+const loadingSection = document.querySelector(loadingSelector);
 
 const membersSection = document.querySelector(membersSectionSelector);
 const costsSection = document.querySelector(costsSectionSelector);
@@ -77,19 +79,24 @@ export const menu = {
     status: '',
 
     enableMainMode() {
+        loadingSection.classList.add(displayNoneClass);
         mobileMenu.closeMobileMenu();
-        headingH2.textContent = '';
-  
+        headingH2.textContent = '';        
+
         arrowNav.classList.remove(displayNoneClass);
-        nextStepButton.classList.remove(displayNoneClass);
+        nextStepSection.classList.remove(displayNoneClass);
 
         siteListItemMain.classList.add(siteListItemActiveClass);
         siteListItemCalculations.classList.remove(siteListItemActiveClass);
         siteListItemHowToUse.classList.remove(siteListItemActiveClass);
         siteListItemAbout.classList.remove(siteListItemActiveClass);
 
-        
+        if (!main.status) {
+            main.status = 'MembersMode'
+        }
+
         switch (main.status) {
+
 
             case 'MembersMode':
                 main.enableMembersMode();
@@ -112,6 +119,7 @@ export const menu = {
     },
 
     enableCalculationsMode() {
+        loadingSection.classList.add(displayNoneClass);
         mobileMenu.closeMobileMenu();
         headingH2.textContent = '';
 
@@ -121,7 +129,7 @@ export const menu = {
         siteListItemCalculations.classList.add(siteListItemActiveClass);
         siteListItemHowToUse.classList.remove(siteListItemActiveClass);
         siteListItemAbout.classList.remove(siteListItemActiveClass);
-       
+
         pageHeader.classList.add(pageHeaderInnerClass);
         pageMain.classList.add(pageMainInnerClass);
 
@@ -130,7 +138,7 @@ export const menu = {
         resultSection.classList.add(displayNoneClass);
 
         headingH1.textContent = 'Мои расчеты';
-        nextStepButton.classList.add(displayNoneClass);
+        nextStepSection.classList.add(displayNoneClass);
 
         calculationsSection.classList.remove(displayNoneClass);
         howToUseSection.classList.add(displayNoneClass);
@@ -143,6 +151,7 @@ export const menu = {
     },
 
     enableHowToUseMode() {
+        loadingSection.classList.add(displayNoneClass);
         mobileMenu.closeMobileMenu();
         headingH2.textContent = '';
 
@@ -152,7 +161,7 @@ export const menu = {
         siteListItemCalculations.classList.remove(siteListItemActiveClass);
         siteListItemHowToUse.classList.add(siteListItemActiveClass);
         siteListItemAbout.classList.remove(siteListItemActiveClass);
-       
+
         pageHeader.classList.add(pageHeaderInnerClass);
         pageMain.classList.add(pageMainInnerClass);
 
@@ -161,7 +170,7 @@ export const menu = {
         resultSection.classList.add(displayNoneClass);
 
         headingH1.textContent = 'Как пользоваться SplitCost';
-        nextStepButton.classList.add(displayNoneClass);
+        nextStepSection.classList.add(displayNoneClass);
 
         calculationsSection.classList.add(displayNoneClass);
         howToUseSection.classList.remove(displayNoneClass);
@@ -171,16 +180,17 @@ export const menu = {
     },
 
     enableAboutMode() {
+        loadingSection.classList.add(displayNoneClass);
         mobileMenu.closeMobileMenu();
         headingH2.textContent = '';
-        
+
         arrowNav.classList.add(displayNoneClass);
 
         siteListItemMain.classList.remove(siteListItemActiveClass);
         siteListItemCalculations.classList.remove(siteListItemActiveClass);
         siteListItemHowToUse.classList.remove(siteListItemActiveClass);
         siteListItemAbout.classList.add(siteListItemActiveClass);
-       
+
         pageHeader.classList.add(pageHeaderInnerClass);
         pageMain.classList.add(pageMainInnerClass);
 
@@ -189,12 +199,41 @@ export const menu = {
         resultSection.classList.add(displayNoneClass);
 
         headingH1.textContent = 'О проекте SplitCost';
-        nextStepButton.classList.add(displayNoneClass);
+        nextStepSection.classList.add(displayNoneClass);
 
         calculationsSection.classList.add(displayNoneClass);
         howToUseSection.classList.add(displayNoneClass);
         aboutSection.classList.remove(displayNoneClass);
 
         this.status = 'AboutMode'
+    },
+
+    enableLoadingMode() {
+        loadingSection.classList.remove(displayNoneClass);
+        mobileMenu.closeMobileMenu();
+        headingH2.textContent = '';
+
+        arrowNav.classList.add(displayNoneClass);
+
+        siteListItemMain.classList.remove(siteListItemActiveClass);
+        siteListItemCalculations.classList.remove(siteListItemActiveClass);
+        siteListItemHowToUse.classList.remove(siteListItemActiveClass);
+        siteListItemAbout.classList.remove(siteListItemActiveClass);
+
+        pageHeader.classList.add(pageHeaderInnerClass);
+        pageMain.classList.add(pageMainInnerClass);
+
+        membersSection.classList.add(displayNoneClass);
+        costsSection.classList.add(displayNoneClass);
+        resultSection.classList.add(displayNoneClass);
+
+        headingH1.textContent = '';
+        nextStepSection.classList.add(displayNoneClass);
+
+        calculationsSection.classList.add(displayNoneClass);
+        howToUseSection.classList.add(displayNoneClass);
+        aboutSection.classList.add(displayNoneClass);
+
+        this.status = 'LoadingMode'
     },
 }

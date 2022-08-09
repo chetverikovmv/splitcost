@@ -174,13 +174,16 @@ const createCost = (costId, costName, costPayer, costValue) => {
 export const sectionCosts = {
     inputName: document.querySelector('input[name="name"]'),
     inputSum: document.querySelector('input[name="sum"]'),
+    inputPayer: document.querySelector('#cost__payer'),
     validationMessages: document.querySelector(formSelector).querySelectorAll(validationMessageCostSelector),
     addCostButton: document.querySelector(addCostButtonSelector),
     costsTextHint: document.querySelector(costsTextSelector), // подсказка добавить первый расход
 
     findNameById(id) { // переписываем id пэйера в имя
-        const name = members.membersList[id - 1].name;
-        return name;
+        if (id > 0) {
+            const name = members.membersList[id - 1].name;
+            return name;
+        }
     },
 
     setListeners() {
@@ -225,6 +228,12 @@ export const sectionCosts = {
             this.validationMessages[1].textContent = 'Введите сумму расхода'
         }
 
+        if (this.inputPayer.options.selectedIndex === 0) {
+
+            this.validationMessages[2].textContent = 'Выберете плательщика'
+        }
+
+
         let numberOfCheckedBoxes = 0;
         const obj = costPopup.getSelectValues(checkboxSelector);
 
@@ -238,7 +247,7 @@ export const sectionCosts = {
             this.validationMessages[2].textContent = 'Укажите хотя бы 1-го пользователя'
         }
 
-        if (this.inputName.value && this.inputSum.value && numberOfCheckedBoxes > 0) {
+        if (this.inputName.value && this.inputSum.value && this.inputPayer.options.selectedIndex > 0 && numberOfCheckedBoxes > 0) {
             isValid = true
         } else {
             const invalidFieldsOfCostNotif = new Notification();

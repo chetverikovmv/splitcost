@@ -66,7 +66,7 @@ export const main = {
         nextStepButton.innerHTML = `<span class="next-step--hidden-text-mobile">далее</span><span
         class="next-step--hidden-text-tablet">перейти </span><span class="next-step--hidden-text-dt">к
         записи расходов</span> >>>`;
-        this.status = 'MembersMode'
+        this.status = 'MembersMode';
     },
 
     enableCostsMode() {
@@ -85,7 +85,7 @@ export const main = {
 
         headingH1.textContent = 'Внесение расходов';
         nextStepButton.innerHTML = `<span class="next-step--hidden-text-tablet">перейти к </span>результат<span class="next-step--hidden-text-tablet">у</span> расчета >>>`;
-        this.status = 'CostsMode'
+        this.status = 'CostsMode';
     },
 
     enableResultMode() {
