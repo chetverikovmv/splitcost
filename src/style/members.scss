@@ -63,8 +63,16 @@
     align-items: center;
 }
 
-.members__button {
+.members__button {    
     width: 100%;
+}
+
+.members__button {    
+    width: 100%;
+    
+    &:disabled {
+        color: $most-gray-color;
+    }
 }
 
 // начиная с планешетного размера

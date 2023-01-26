@@ -19,6 +19,10 @@ import {
     Notification
 } from "./Notification.js";
 
+import {
+    canvas
+} from "./canvas.js"
+
 const {
     resultSelectors: {
         resultCardSelector,
@@ -26,19 +30,30 @@ const {
         resultCopyButtonSelector,
         resultTextLinkSelector,
         resultCopyLinkButtonSelector,
+        resultStatsSelector,
+        resultStatsBodySelector,
+        resultStatsHeaderSelector,
+        resultStatsTotalSelector,
+        arrowIconSelector,
         templateResult,
         domain
     },
 } = selectors;
 
 const resultTextLink = document.querySelector(resultTextLinkSelector);
+const resultStats = document.querySelector(resultStatsSelector);
+const resultStatsBody = document.querySelector(resultStatsBodySelector);
+const resultStatsTotal = document.querySelector(resultStatsTotalSelector);
+const arrowIcon = document.querySelector(arrowIconSelector);
 
 export const sectionResult = {
     resultCopyButton: document.querySelector(resultCopyButtonSelector),
     resultCopyLinkButton: document.querySelector(resultCopyLinkButtonSelector),
+    resultStatsButton: document.querySelector(resultStatsHeaderSelector),
 
     calculateResult() {
 
+        result.total = 0;
 
         costs.costsList.forEach((item, i) => { // заполняем расходы и подсчитываем costPerUser
             result.costsList[i] = item; // перенос значения из исходного массива
@@ -65,18 +80,23 @@ export const sectionResult = {
                 );
 
                 if (itemCost.users[key]) {
-
                     sumOfCostPerUser += itemCost.costPerUser;
+
                 }
 
                 if (itemMember.id == itemCost.payer) {
                     sumOfPayments += parseInt(itemCost.value, 10)
                 }
             })
+            result.membersList[iMember].sumOfCostPerUser = sumOfCostPerUser
+            // result.total += parseInt(sumOfCostPerUser, 10);
+            result.total += Math.round(sumOfCostPerUser);
 
             result.membersList[iMember].balance = sumOfCostPerUser - sumOfPayments;
+
             result.membersList[iMember].isPair = false; // отметка о наличии пары
             result.membersList[iMember].isPaymentWithinPair = false; // отметка о факте перевода внутри пары
+
         })
 
         // рендеринг
@@ -94,8 +114,8 @@ export const sectionResult = {
         }) // сортировка массива участников чтоб в начале были с парами
 
         let resultPayementsWithinPairs = [];
-
         result.membersList.forEach((item) => {
+            item.balanceForStats = item.balance * (-1);
             let member = item;
             let summ = 0;
             let memberPair = result.membersList[member.pair - 1];
@@ -147,6 +167,20 @@ export const sectionResult = {
         function findPair(member) {
             return member.id == this.pair;
         }
+
+
+        // вывод общих затрат (total)
+        resultStatsTotal.innerHTML = '';
+        const totalText = document.createElement('p');
+        totalText.innerHTML = `Общие затраты (итого): <b>${result.total} ₽</b>`
+        resultStatsTotal.append(totalText);
+
+        // вывод итоговых затрат на каждого участника
+        canvas.canvasSumOfCostPerUser(result.membersList);
+
+        // вывод balance
+        canvas.canvasBalance(result.membersList)
+
     },
 
     makeLinkToCalculation(currentCalculationId) {
@@ -173,6 +207,23 @@ export const sectionResult = {
             navigator.clipboard.writeText(textLink);
             successCopyingNotif.open('ссылка скопирована!', 3000);
         });
+
+        this.resultStatsButton.addEventListener('click', (evt) => {
+            evt.preventDefault();
+            if (resultStatsBody.classList.contains('result__stats-body--closed')) {
+                resultStatsBody.classList.remove('result__stats-body--closed');
+                resultStatsBody.classList.add('result__stats-body--opened');
+                arrowIcon.classList.remove('arrow-icon--closed');
+                arrowIcon.classList.add('arrow-icon--opened');
+            } else {
+                resultStatsBody.classList.remove('result__stats-body--opened');
+                resultStatsBody.classList.add('result__stats-body--closed');
+                arrowIcon.classList.remove('arrow-icon--opened');
+                arrowIcon.classList.add('arrow-icon--closed');
+            }
+
+        });
+
 
         resultTextLink.addEventListener('click', () => { // выделение текста ссылки по клику
             resultTextLink.select();

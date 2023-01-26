@@ -102,12 +102,19 @@ arrowMemberLink.addEventListener('click', (evt) => { // кнопка "УЧАСТ
         // case 'MembersMode':
         //     break;
 
+        // case 'CostsMode':
+        //     confirmBackToMembersFromCosts.open('Вернуться к внесению участников?', `Вся расходы будут удалены!`, 'ОК', 'отмена');
+        //     break;
+
+        // case 'ResultMode':
+        //     startNewCalculation();
+        //     break;
         case 'CostsMode':
-            confirmBackToMembersFromCosts.open('Вернуться к внесению участников?', `Вся расходы будут удалены!`, 'ОК', 'отмена');
+            main.enableDisabledMembersMode();
             break;
 
         case 'ResultMode':
-            startNewCalculation();
+            main.enableDisabledMembersMode();
             break;
     }
 
@@ -117,6 +124,10 @@ arrowCostsLink.addEventListener('click', (evt) => { // кнопка "РАСХО�
     evt.preventDefault();
     switch (main.status) {
         case 'MembersMode':
+            checkAndEnableCostMode();
+            break;
+
+        case 'DisabledMembersMode':
             checkAndEnableCostMode();
             break;
 
@@ -138,6 +149,10 @@ arrowResultLink.addEventListener('click', (evt) => { // кнопка "РЕЗУЛ
     switch (main.status) {
         case 'MembersMode':
             confirmNextStepPopup.open('Нельзя перейти сразу к результату', `Сначала введите расходы`, 'ОК', 'no cancel button')
+            break;
+
+        case 'DisabledMembersMode':
+            checkAndEnableResultMode();
             break;
 
         case 'CostsMode':
@@ -279,6 +294,7 @@ const checkAndSendAndEnable = () => {
 
 
 const checkAndEnableResultMode = () => {
+    sectionResult.clearResults();   
     sectionResult.calculateResult();   
   
     costs.costsList.length == 0 ?
@@ -296,6 +312,10 @@ nextStepButton.addEventListener('click', (evt) => {
 
     switch (main.status) {
         case 'MembersMode':
+            checkAndEnableCostMode();
+            break;
+
+        case 'DisabledMembersMode':
             checkAndEnableCostMode();
             break;
 

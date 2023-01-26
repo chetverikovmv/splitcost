@@ -31,6 +31,9 @@ import {
 import {
     Backend
 } from "./backend.js";
+import {
+    result
+} from "./result.js";
 
 const {
     popupsSelectors: {
@@ -53,7 +56,7 @@ const confirmTransitionToCalculationPopup = new PopupWithMessage(
 
     () => { // по клику на "да" (сабмит)
         const currentCalculationId = confirmTransitionToCalculationPopup._cardElement.calculationId
-        
+
         members.eventName = confirmTransitionToCalculationPopup._cardElement.eventName;
         members.membersList = confirmTransitionToCalculationPopup._cardElement.calculationMembers;
 
@@ -114,6 +117,8 @@ export const calculations = {
     },
 
     clearAndRenderCalculation() {
+        result.membersList.length = 0;
+        
         sectionMembers.clearMembers();
         sectionMembers.renderMembers();
         sectionMembers.eventNameInput.value = members.eventName;
@@ -148,13 +153,13 @@ export const calculations = {
             .then(result => {
                 menu.enableMainMode();
                 if (result) {
-                members.eventName = result.eventName;
-                members.membersList = result.members;
-                localStorage.setItem('current', calculationId);
-                sectionResult.makeLinkToCalculation(localStorage.getItem('current'));
-                costs.costsList = result.costs;
+                    members.eventName = result.eventName;
+                    members.membersList = result.members;
+                    localStorage.setItem('current', calculationId);
+                    sectionResult.makeLinkToCalculation(localStorage.getItem('current'));
+                    costs.costsList = result.costs;
 
-                calculations.clearAndRenderCalculation();
+                    calculations.clearAndRenderCalculation();
                 } else {
                     invalidLinkPopup.open('Такого расчета нет', 'проверьте адрес ссылки на расчет', 'OK', 'no cancel button')
                 }

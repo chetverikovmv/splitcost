@@ -38,11 +38,12 @@
     font-size: 18px;
 }
 
-.result__text, .result__text-link {
+.result__text,
+.result__text-link {
     margin-top: 0;
     margin-left: 0;
     padding-right: 20px;
-    
+
     &:focus {
         padding-right: 20px;
     }
@@ -54,7 +55,8 @@
     margin-top: 4px;
 }
 
-.result__copy, .result__copy-link {
+.result__copy,
+.result__copy-link {
     font-size: 14px;
     color: #333333;
     position: relative;
@@ -93,5 +95,91 @@
         line-height: 58px;
         overflow: hidden;
         text-overflow: ellipsis;
+    }
+}
+
+.result__stats {
+    margin-bottom: 36px;
+}
+
+.result__stats-header {
+    height: 58px;    
+    background-color: $light-gray-color;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    &:active {
+        background-color: $ultra-gray-color--down;
+    }
+}
+
+.result__stats-icon-wrapper {
+    width: 58px;
+    height: 58px;
+    background-color: $strong-gray-color;
+}
+
+// .arrow-icon {
+//     transform: rotate(90deg);
+
+// }
+
+.arrow-icon--opened {
+    transform: rotate(180deg);
+    transition: transform 0.3s ease-in-out
+}
+
+.arrow-icon--closed {
+    transform: rotate(0deg);
+    transition: transform 0.3s ease-in-out
+}
+
+.result__stats-text {
+    padding-left: 20px;
+}
+
+.result__stats-text-inner {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.result__stats-body {    
+    background-color: $light-gray-color;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center;
+    overflow-y: hidden 
+}
+
+.result__stats-body--opened {
+    // display: flex;
+    max-height: 800px;
+    transition: max-height 0.3s ease-in-out
+}
+
+.result__stats-body--closed {
+    // display: none;
+    max-height: 0;
+    transition: max-height 0.3s ease-in-out
+}
+
+.result__stats-total {
+    height: 58px; 
+    display: flex;
+    // justify-content: center; 
+    align-items: center;
+}
+
+#canvas-balance {
+    margin-bottom: 20px;
+}
+
+@media screen and (min-width: $tablet-width) {
+    .result__stats-header {      
+        &:hover {
+            background-color: $disabled-color;
+        }
     }
 }

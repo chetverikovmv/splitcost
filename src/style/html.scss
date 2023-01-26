@@ -4,6 +4,11 @@
     padding: 0;
 }
 
+/* убираем выделение при нажатии на мобильных */
+* {
+    -webkit-tap-highlight-color: transparent; 
+}
+
 /* border-box */
 *,
 *::before,
@@ -36,6 +41,7 @@ a {
     height: 1px;
     margin: -1px;
 }
+
 
 /* общие стили для сайта */
 body {

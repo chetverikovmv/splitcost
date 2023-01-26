@@ -40,13 +40,13 @@ export class Backend {
 
     change(data) {
         let key = localStorage.getItem('current');
-        let obj = {};
-        obj[key] = data; // '-N76p81bnOXMMNtgYgoi': data
+        // let obj = {};
+        // obj[key] = data; // '-N76p81bnOXMMNtgYgoi': data
 
         return fetch('https://splitcost-6d61b-default-rtdb.europe-west1.firebasedatabase.app/data.json', {
                 method: 'PATCH',
                 body: JSON.stringify({
-                    ...obj
+                    [key]: data
                 }),
                 headers: {
                     'Content-Type': 'application/json'

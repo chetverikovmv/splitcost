@@ -102,6 +102,10 @@ export const menu = {
                 main.enableMembersMode();
                 break;
 
+            case 'DisabledMembersMode':
+                main.enableDisabledMembersMode();
+                break;
+
             case 'CostsMode':
                 main.enableCostsMode();
                 break;

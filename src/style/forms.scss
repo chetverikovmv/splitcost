@@ -28,6 +28,11 @@ select {
     &:focus::placeholder {
         color: transparent;
     }
+
+    &:disabled {
+        background-color: $disabled-color;
+        color: $most-gray-color;
+    }
 }
 
 
@@ -83,9 +88,6 @@ select {
     position: relative;
     padding-left: 79px;
     cursor: pointer;
-
-    //display: flex;
-    //align-items: center;
 }
 
 .checkbox-indicator {

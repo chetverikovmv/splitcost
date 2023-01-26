@@ -53,6 +53,7 @@ export const selectors = {
     membersSelectors: {
         eventNameSelector: '#event-name',
         addMemberButtonSelector: '.members__button',
+        membersDeleteButtonSelector: '.members__delete',
         memberSelector: '.members__member',
         memberNameSelector: '.members__member-name',
         memberPairSelector: '.members__member-pair',
@@ -76,13 +77,18 @@ export const selectors = {
         templateCostUser: '.template-cost-user',
     },
 
-    resultSelectors: {
+    resultSelectors: { 
         resultCardSelector: '.result__card',
         resultTextSelector: '.result__text',
         resultCopySelector: '.result__wrapper',
         resultCopyButtonSelector: '.result__copy',
         resultTextLinkSelector: '.result__text-link',
         resultCopyLinkButtonSelector: '.result__copy-link',
+        resultStatsSelector: '.result__stats',
+        resultStatsBodySelector: '.result__stats-body',  
+        resultStatsHeaderSelector: '.result__stats-header',          
+        resultStatsTotalSelector: '.result__stats-total',  
+        arrowIconSelector: '.arrow-icon ',  
         templateResult: '.template-result',
         domain: 'https://splitcost.ru/'
     },
@@ -136,4 +142,9 @@ export const selectors = {
         howToUseSelector: '.how-to-use',
         aboutSelector: '.about',
     },
+
+    canvasSelectors: {
+        canvasSumOfCostPerUserSelector: '#canvas-sum-of-cost-per-user',
+        canvasBalanceSelector: '#canvas-balance',
+    }
 };
