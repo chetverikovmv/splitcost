@@ -52,7 +52,6 @@ export const sectionResult = {
     resultStatsButton: document.querySelector(resultStatsHeaderSelector),
 
     calculateResult() {
-
         result.total = 0;
 
         costs.costsList.forEach((item, i) => { // заполняем расходы и подсчитываем costPerUser
@@ -127,7 +126,6 @@ export const sectionResult = {
                     memberPair.isPair = true; // отметка о наличии пары
                     memberPair.isPaymentWithinPair = true; // отметка о факте перевода внутри пары
 
-
                     resultPayementsWithinPairs.push({
                         summ: Math.round(summ),
                         creditor: creditor.name,
@@ -149,6 +147,23 @@ export const sectionResult = {
                         resultCopyLink.before(createResultCard(false, false, Math.round(summ), creditor.name, member.name).getResultCard()); // рисуем карточку результата
                     }
                 }
+
+                member.balance -= summ;
+                creditor.balance += summ;
+            }
+        })
+
+        result.membersList.forEach((item) => { // повторный прогон на тот случай если остался участник с положительным балансом
+            let member = item;
+            let summ = 0;
+            while (member.balance > 0) {
+                creditor = result.membersList.find(findCreditor);
+                if (!creditor) { // выход из цикла, если из-за округления не нашелся кредитор, чтобы не падало в ошибку 
+                    break
+                }
+                summ = Math.min(member.balance, Math.abs(creditor.balance));
+
+                resultCopyLink.before(createResultCard(false, false, Math.round(summ), creditor.name, member.name).getResultCard()); // рисуем карточку результата
 
                 member.balance -= summ;
                 creditor.balance += summ;
